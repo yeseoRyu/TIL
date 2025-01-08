@@ -3,9 +3,9 @@
 코루틴의 생명 주기를 관리하기 위한 핸들러.   
 코루틴의 실행 상태를 추적하거나 제어할 수 있음.   
 
-* cancel(): 현재 작업을 취소
-* isActive: 코루틴이 실행 중인지 여부를 확인
-* join(): 작업이 완료될 때까지 대기
+* cancel() : 현재 작업을 취소
+* isActive : 코루틴이 실행 중인지 여부를 확인
+* join()   : 작업이 완료될 때까지 대기
 
 
 ### 2. Deferred
@@ -69,6 +69,13 @@ Job을 이용해 API 연속 호출을 취소하는 방법은
 launch 된 Job을 종료할 때 사용하는 것이 **cancel()**   
 
 
+> Throttle
+
+    비슷한 개념으로 Throttle 이 있다.   
+    일정 시간동안 딱한번만 이벤트를 발생시키는 기술로, 버튼 이벤트나 스크롤 등에 쓰인다.   
+
+    - Throttle은 일정 간격마다 실행되고, Debounce는 마지막 이벤트만 실행된다는 차이가 있다.
+
 ### CancellationException
 
 Kotlin Coroutine에서 코루틴이 취소될 때 발생하는 정상적인 예외   
@@ -82,5 +89,6 @@ CPU를 많이 사용하는 작업이나 긴 루프에서는 **isActive**를 수�
 
 ### async 와 await
 
-**async** 를 이용하여 scope를 열면, **await()**로 결과를 받을 수 있는데,   
+**async** 를 이용하여 scope를 열면, 비동기 처리 작업을 하고   
+**await()**로 결과를 받을 수 있는데,   
 이때 반환되는 리턴값이 **Deferred** 이다.   
