@@ -3,7 +3,7 @@ Flow
 코틀린 코루틴의 일부.   
 비동기 데이터 스트림을 처리하기 위한 도구이다.   
 
-![alt text](image02.png)
+![alt text](../images/image02.png)
 
 suspen fun 과 달리 여러 값을 내보내는 데이터 스트림이며, 코루틴 기반으로 빌드된다.   
 
