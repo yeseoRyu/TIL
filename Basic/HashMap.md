@@ -3,16 +3,19 @@ HashMap 이란?
 
 * Key-Value로 짝을 이루어 데이터를 저장하는 Map 인터페이스를 구현한 맵클래스.
 
-## HashTabe vs HashMap
+<br><br>
+
+## HashTabe vs HashMap 차이점
 
 * 동기화 여부
   - 해시맵은 동기화를 지원하지 않으나, 해시테이블은 동기화를 지원하기 때문에 여러 쓰레드에서 동시 접근이 가능하다.
 
 * key나 value에 null 허용 여부
-  - 해시맵은 null 혀용이지만, 해시테이블은 nulldmf허용하지 않는다.
+  - 해시맵은 null 혀용이지만, 해시테이블은 null을 허용하지 않는다.
 
 ![map](../images/collection_map관계도.jpg)
 
+<br><br>
 
 ## Hash 란 무엇일까?
 
