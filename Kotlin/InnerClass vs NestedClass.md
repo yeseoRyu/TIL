@@ -1,4 +1,5 @@
 Inner Calss와 Nested Class의 차이
+===
 
 코틀린에서 inner class와 nested class는 모두 클래스 안에 정의된 클래스이지만,   
 ***외부 클래스와의 관계와 사용 방식***에서 차이가 있습니다.
@@ -24,6 +25,6 @@ Inner Calss와 Nested Class의 차이
   - 외부 클래스와의 관계가 필요한 경우 (외부 멤버 사용 등): inner class
 
 
-#### RecyclerView Adapter 의 ViewHolder 를 정의할 때
+### RecyclerView Adapter 의 ViewHolder 를 정의할 때
 ViewHolder는 각각의 Adapter 에서 독립적으로 사용되는 객체이며,
 다른 Adapter와의 참조로부터 안전해야 한다. 따라서 Nested class 로 선언하자!

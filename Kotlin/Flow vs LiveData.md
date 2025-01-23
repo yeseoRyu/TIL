@@ -11,7 +11,7 @@ suspen fun 과 달리 여러 값을 내보내는 데이터 스트림이며, 코�
     - collectLatest는 현재 작업을 중지하고 최신 값을 수집한다.
     - 수신한 모든 값을 처리해야 하는 경우 collect를 사용하고, 최신 값만 처리 하려면 collectLatest를 사용한다.
 
-
+```
     flow {
         emit(1)
         delay(50)
@@ -21,7 +21,7 @@ suspen fun 과 달리 여러 값을 내보내는 데이터 스트림이며, 코�
         delay(100) // Emulate work
         println("$value collected")
     }
-
+```
 
 * StateFlow
     - StateFlow는 현재 상태와 새로운 상태 업데이트를 수집기에 내보내는 관찰 가능한 상태 홀더 흐름이다.

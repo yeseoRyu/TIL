@@ -12,17 +12,21 @@ MutableStateFlow 업데이트를 발생하면, StateFlow에서 수집된다.
 
 ## shareIn을 사용하여 Colde Flow을 Hot Flow으로 만들기
 
+```
     fun <T> Flow<T>.stateIn(
         scope: CoroutineScope, 
         started: SharingStarted, 
         initialValue: T
     ): StateFlow<T>
+```
 
 
 이 연산자를 사용하면, Flow(콜드스트림)를 주어진 코루틴 스코프에서 시작되는 StateFlow(핫스트림)로 변경한다. 단일로 실행되는 업스트림 플로우에서 가장 최근에 내보낸 값을 여러 다운스트림 구독자들이 공유하는 형태다.
 
 
 > 참고: 콜드 플로우는 on-demand 방식으로 생성되며 관찰 중일 때 데이터를 방출한다. 핫 플로우는 항상 활성화되어 있으며 관찰 여부에 관계없이 데이터를 방출할 수 있다.
+
+<br>
 
 1. Cold Flow
 구독자가 있을 때만 데이터 스트림을 생성하고 실행되는 플로우

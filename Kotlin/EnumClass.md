@@ -7,9 +7,10 @@ Enum Class
 Kotlin의 Enum 클래스는 정의된 enum 상수를 나열하고   
 이름으로 enum 상수를 가져오는 합성 속성과 메서드를 가지고 있다.   
 
+```
     EnumClass.valueOf(value: String): EnumClass
     EnumClass.entries: EnumEntries<EnumClass> // specialized List<EnumClass>
-
+```
 
 개발시 하드코딩된 문자열이나 상수 사용을 최대한 줄이고,   
 enum으로 관리하는 것이 좋다. 그 이유는 아래와 같다.
@@ -23,11 +24,10 @@ enum으로 관리하는 것이 좋다. 그 이유는 아래와 같다.
 * 안정성 향상
   - 잘못된 index 값에 대한 처리가 내장됨
 
-
+```
     enum class Position(val index: Int) {
         HOME(0),
         BOOKMARK(1);
-
         companion object {
             fun fromIndex(index: Int): Position {
                 return entries.find { it.index == index }
@@ -35,8 +35,9 @@ enum으로 관리하는 것이 좋다. 그 이유는 아래와 같다.
             }
         }
     }
+```
 
-*** enum의 함수를 companion object 안에 선언하는 이유는? ***
+***enum의 함수를 companion object 안에 선언하는 이유는?***
 
 * 외부 클래스와 결합도 감소 
   - companion object를 사용하면 enum과 관련된 작업을 외부에서 따로 구현할 필요가 없다. 즉, Position에 관한 논리는 Position 내부에서 완전히 캡슐화됩니다.
