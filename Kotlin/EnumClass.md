@@ -28,6 +28,7 @@ enum으로 관리하는 것이 좋다. 그 이유는 아래와 같다.
     enum class Position(val index: Int) {
         HOME(0),
         BOOKMARK(1);
+        
         companion object {
             fun fromIndex(index: Int): Position {
                 return entries.find { it.index == index }
