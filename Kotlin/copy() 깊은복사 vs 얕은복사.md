@@ -39,9 +39,9 @@ Kotlin에서 copy() 함수는 주로 data class에서 사용되며, 객체의 �
 
 ### 자바의 생성자를 활용한 객체 복사
 
-'''
+```
     constructor(blurHash: String?): this(blurHash, color, createdAt, description, downloads, height, id, likedByUser, likes, publicDomain, updatedAt, width, exif, urls, user)
-'''
+```
 
 * 자바의 경우에는 immutable하게 복사를 해야한다고 하면 위와 같이 복잡하고 중첩된 코드를 작성해야 한다. 그러나 이러한 것이 kotlin에서는 copy()로 간단하게 적용이 가능한 것이다.
 
