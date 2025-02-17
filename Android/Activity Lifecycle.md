@@ -16,7 +16,7 @@ Activity 클래스는 6가지 콜백으로 이루어진 핵심 집합을 제공�
 
 * `onStop()`은 foeground에 있던 Activity가 background로 이동하여 더 이상 보이지 않을 때 호출된다. 시스템에서 메모리 부족시 background 상에 존재하는 앱들을 강제로 종료할 수 있기 때문에 **메모리에 할당된 리소스들 중 중요한 리소스들의 해제** 는 이 시점에 하는 것이 좋다.
 
-* 그리고 Activity가 종료되거나 앱 프로세스 자체가 종료되면 `onDeatroy()`가 호출된다. 이 콜백이 호출되면 해당 Activity는 스택에서 pop된다.
+* 그리고 Activity가 종료되거나 앱 프로세스 자체가 종료되면 `onDestroy()`가 호출된다. 이 콜백이 호출되면 해당 Activity는 스택에서 pop된다.
 
 <br><br>
 
@@ -34,9 +34,14 @@ Activity 클래스는 6가지 콜백으로 이루어진 핵심 집합을 제공�
 
 <br>
 
-<h3> Dialog </h3>
+### Dialog
 
 Dialog는 작은 window이다. 즉, Activity와는 별개의 화면 구성 요소이기 때문에 Activity위에 Dialog가 생성되어도 스택에 push되지 않는다. Activity는 여전히 `RESUMED` 상태이다.
+
+* Dialog Fragment와의 차이
+
+  - Dialog는 액티비티 위에 띄우는 View로 종속되어 액티비티 파괴시 같이 사라지지만, Dialog Fragment는 프레그먼트 처럼 독립적인 생명주기를 가지고 있다. 화면 회전 시에 자동으로 복구가 되고(`onViewStateRestored()` 호출), 백 스택을 지원한다.
+  - 따라서 재사용성과 생명주기 관리가 중요한 경우 Dialog Fragment를 사용하는 게 좋다.
 
 <br>
 
@@ -73,6 +78,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 * 액티비티가 다시 생성될 때 매개변수로 `Bundle`이 전달되는 것을 볼 수 있다. 바로 이 객체로부터 상태를 복원하는 것이다 !
 
+* `savedInstanceState`는 화면 회전, 프로세스 강제 종료와 같은 짧은 생명주기에서 호출된다.
+
 <br>
 
 ### A 액티비티 위에 B 액티비티가 떴을 때의 라이프사이클 변화
@@ -100,6 +107,13 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 * A는 onRestart(), onStart(), onResume()을 거쳐 다시 running.
 
+<br>
+
+> 각 화면이 독립적인 생명주기를 가지고 백 스택으로 화면 전환을 하기 편리해 보일 수 있는데, 왜 액티비티로 화면 구성을 하지 않고 프레그먼트로 하는 걸까? <br>
+ 1. 액티비티 전환 시 성능 오버헤드가 크다.
+ 2. 액티비티 전환 애니메이션이 추가되면서 UX적으로 부드럽지 않을 수 있음.
+ 3. 데이터를 주고받을 때 Intent를 사용해야 해서 번거로움.
+
 <br><br>
 
 # 싱글 액티비티(SAA)와 프래그먼트의 중요성
@@ -118,9 +132,18 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ## 프래그먼트 활용과 관리
 
-* 프래그먼트는 독립적인 생명주기를 가지며, 다양한 화면 구성과 재사용성을 제공합니다. 이는 앱의 성능 최적화와 메모리 관리에도 긍정적인 영향을 미친다.
+* Fragment 사용 이유
 
-* 프래그먼트 간의 데이터 전달과 상호작용은 인터페이스나 ViewModel을 통해 이루어질 수 있다. 이는 프래그먼트 간의 결합도를 낮추고, 코드의 재사용성을 높인다.
+  - Activity 안에 코드가 길어지면 유지보수 및 관리하기가 어려워짐.
+  - 안드로이드 기기는 휴댜폰, 태블릿 등 다양하기 때문에 단순 Activit로 화면을 그리기에는 한계가 있음.
+
+* Fragment 장점
+
+  - Fragment는 Activity와 달리 Menifest에 Component를 등록하지 않고, 독립적으로 존재할 수 없다. (Activity에 종속) 그렇기 때문에 훨씬 가볍게 사용이 가능하다.
+  - 자체 레이아웃(xml)을 가지며 생명주기를 가진다. 이를 통해 **다양한 화면 구성**과 **재사용성**을 제공한다. 이는 앱의 **성능 최적화**와 **메모리 관리**에 효율적이다.
+  - Fragment 간의 데이터 공유가 용이하다. (ViewModel, LiveData 등)
+  - 액티비티를 다시 생성할 필요 없이 프레그먼트 교체만으로 화면 전환이 가능하여 UX가 부드러움.
+  - 일반 View와 달리 생명주기를 가지기 때문에 이를 활용하여 리소스 등을 따로 활용 및 관리를 할 수 있다.
 
 <br>
 
