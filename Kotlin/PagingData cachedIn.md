@@ -1,5 +1,4 @@
-PagingData
-===
+# PagingData
 
 ```
     val items: Flow<PagingData<UiItem>> = _apiPhotoState.asFlow()
@@ -18,10 +17,6 @@ PagingData
             }
         }
 ```
-
-## cachedIn
-
-* 
 
 <br><br>
 
