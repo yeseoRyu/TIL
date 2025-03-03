@@ -1,6 +1,6 @@
 # Sealed Class란?
 
-특정 클래스들만 상속할 수 있도록 제한하는 abstract 클래스!
+같은 파일 내에서만 상속할 수 있도록 제한하는 abstract 클래스!
 
 <br>
 
@@ -19,6 +19,9 @@ fun sound(animal: Animal) {
     }
 }
 ```
--
 
 <br>
+
+# Sealed Interface
+
+같은 파일 내에서만 상속이 가능한 interface
