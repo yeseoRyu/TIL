@@ -135,7 +135,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 * Fragment 사용 이유
 
   - Activity 안에 코드가 길어지면 유지보수 및 관리하기가 어려워짐.
-  - 안드로이드 기기는 휴댜폰, 태블릿 등 다양하기 때문에 단순 Activit로 화면을 그리기에는 한계가 있음.
+  - 안드로이드 기기는 휴대폰, 태블릿 등 다양하기 때문에 단순 Activit로 화면을 그리기에는 한계가 있음.
 
 * Fragment 장점
 
